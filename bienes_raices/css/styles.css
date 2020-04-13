@@ -1,0 +1,497 @@
+html{
+    font-size: 62.5%; 
+    /** Reset para REMS - 62.5% = 10px de 16px, 
+    entonces, a partir de ahora, 2 rem = 20 px **/
+    box-sizing: border-box;
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+/* el codigo de arriba sirve para que al definir un ancho x y un
+padding y para un elemento, el tamano total no sea x + y, si no que
+respetara el ancho y dado */
+
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem; /** asi vuelve a ser 16px, 
+    que es el tamano por defecto en el navegador**/
+}
+
+/** Globales **/
+.contenedor{
+    max-width: 100rem;
+    margin: 0 auto;
+    width: 95%; 
+}
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 3.4rem;
+}
+h3{
+    font-size: 3.0rem;
+}
+h4{
+    font-size: 2.6rem;
+}
+img{
+    max-width: 100%; /* se ajusta al contenedor */
+}
+
+/** Utilidades **/
+.seccion{
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+.fw_300{
+    font-weight: 300;
+}
+.centrar_texto{
+    text-align: center;
+}
+.d_block{
+    display: block!important;
+}
+.contenido_centrado{
+    max-width: 65rem;
+}
+/** Botones **/
+.boton{
+    border: none;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    font-size:1.8rem;
+    display: inline-block;
+    margin-top: 3rem;
+    display: block;
+    flex: 0 0 100%;
+}
+@media (min-width: 800px){
+    .boton{
+        display: inline-block;
+        flex: 0 0 auto;  
+    }
+}
+.boton:hover{
+    cursor: pointer;
+}
+.boton_amarillo{
+    background-color: #E08709;
+}
+.boton_verde{
+    background-color: #71B100;
+}
+.ver_todas{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Header */
+.site-header{
+    background-color: #333333;
+    padding: 1rem 0rem 3rem 0rem;
+}
+
+.site-header.inicio{
+    background-image: url("../img/header.jpg");
+    height: 100vh;
+    min-height: 70rem;
+    background-position: center center;
+    background-size: cover;
+}
+.encabezado{
+    color: black;
+}
+.contenido-header{ /* este estilo es para alinear 
+    los dos modulos del header en direccion vertical */
+    height: 100%; /* se necesita para que los hijos llenen
+    la altura del padre, los contenidos son mas pequenos que
+    el header entonces no tenia sentido el codigo sin esto*/
+    display: flex; /* flex solo afecta a los primeros hijos
+    de la clase, es decir, los elementos que esten en la primera
+    indentacion */
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+@media (min-width: 800px){
+    .contenido-header{
+        text-align: left;
+    }    
+}
+
+.contenido-header h1{
+    color: white;
+    padding-bottom: 2rem;
+    max-width: 60rem;
+    line-height: 5rem;
+}
+
+.barra{ /* este estilo es para alinear el primer modulo
+    del header de manera horizontal */
+    padding-top: 3rem;
+}
+@media (min-width: 800px){
+    .barra{ /* este estilo es para alinear el primer modulo
+        del header de manera horizontal */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
+/** Navegacion **/
+.navegacion a{
+    color: hsl(0,0%,100%, 0.6);
+    text-decoration: none;
+    font-size: 2.2rem;
+    display: block;
+    margin: 5rem 0;
+}
+.navegacion a:last-of-type{
+    margin: 5rem 0 0 0;
+}
+@media (min-width: 800px){
+    .navegacion a{
+        display: inline-block;
+        margin-right: 2rem;
+        font-size: 1.8rem; /** = 18 px **/
+    }
+    .navegacion a:last-of-type{
+        margin-right: 0px;
+    }
+}
+.navegacion a:hover{
+    color: #71B100;
+}
+
+/** Mobile Menu **/
+.mobile-menu img {
+    width: 5rem;
+}
+@media (min-width: 800px){
+    .mobile-menu img{
+        display: none;
+    }
+}
+.navegacion:target{
+    display: block;
+}
+.navegacion{
+    display: none;
+}
+
+@media (min-width: 800px){
+    .navegacion{
+        display: block;
+    }
+}
+
+/** Iconos Nosotros **/
+@media (min-width: 800px){
+    .iconos_nosotros{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.icono{
+    text-align: center;
+}
+
+@media (min-width: 800px){
+    .icono{
+        flex-basis: calc(33.3% - 1rem);
+        line-height: 1.7rem;
+        margin-right: 2rem;
+    }
+}
+.icono:last-of-type{
+    margin-right: 0rem;
+}
+.icono h3{
+    text-transform: uppercase;
+}
+
+/** Anuncios **/
+
+@media (min-width: 800px){
+    .contenedor_anuncios{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* por defecto es nowrap, que impide que se adapte al tope, al ponerle wrap se acota */
+    }    
+}
+
+.anuncio{
+    /*
+    flex-grow: 1;  esto hace que, si el contenido puede, va a crecer 
+    flex-shrink: 0; hace que no se encoja el contenido 
+    grow y shrink tienen funciones contrarias, uno hace que se haga mas grande si es
+    posible y el otro que se haga mas pequeno si es posible
+    flex-basis: calc(33.3% - 1rem);
+    estos 3 atributos se pueden pasar seguidos a flex como sigue debajo
+    */
+    border: 0.1rem solid #B5B5B5;
+    background: #F5F5F5;
+    margin-bottom: 2rem;
+}
+@media (min-width: 800px){
+    .anuncio{
+        flex: 0 0 calc(33.3% - 1rem);
+    }
+}
+
+.contenido_anuncio{
+    padding: 2rem;
+}
+
+.contenido_anuncio h3,
+.contenido_anuncio p {
+    margin-top: 0rem;
+    font-weight: 500;
+}
+.contenido_anuncio h3{
+    font-size: 2.5rem;
+}
+.precio{
+    color: #71B100;
+    font-weight: 700;
+}
+.iconos_caracteristicas{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    max-width: 50rem;
+    flex:1;
+}
+.iconos_caracteristicas li{ /* esto sirve para que todos los elementos tomen todo el
+    espacio disponible */
+    
+    display: flex;
+}
+.iconos_caracteristicas li img{
+    margin-right: 2rem;
+}
+
+/** Contacto **/
+.imagen_contacto{
+    background-image: url(../img/encuentra.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+}
+
+.contenido_contacto{
+    flex:0 0 95%;
+    color:white;
+}
+.contenido_contacto p{
+    font-size: 1.8rem;
+}
+
+/** Seccion Inferior **/
+.seccion_inferior .blog a{
+    text-decoration: none;
+    color: black;
+}
+
+@media (min-width: 800px){
+    .seccion_inferior{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .seccion_inferior .blog{
+        flex-basis: 60%;
+    }
+
+    .seccion_inferior .testimoniales{
+        flex-basis: calc(40% - 2rem);
+    }
+}
+
+.entrada_blog{
+    margin: 0 auto 2rem auto;
+    max-width: 90%;
+}
+@media (min-width: 800px){
+    .entrada_blog{
+        display: flex;
+        justify-content: space-between;
+    }    
+}
+.entrada_blog:last-of-type{
+    margin-bottom: 0;
+}
+
+@media (min-width: 800px){
+    .entrada_blog .imagen{
+        flex-basis: 40%;
+    }
+    .entrada_blog .texto_entrada{
+        flex-basis: calc(60% - 3rem);
+    }
+}
+
+.texto_entrada h4{
+    margin: 0;
+    line-height: 2rem;
+}
+.texto_entrada a{
+    color: black;
+    text-decoration: none;
+}
+.texto_entrada h4::after{
+    margin-top: 1rem;
+    content:'';
+    display:block;
+    width: 15rem;
+    height: .5rem;
+    background-color: #71B100;
+}
+
+.texto_entrada span{
+    color: #E08709;
+}
+
+/** Testimoniales **/
+.testimonial{
+    background-color: #71B100;   
+    font-size: 2.4rem;
+    padding: 3rem;
+    color: white;
+    border-radius: 2rem;
+}
+.testimonial p{
+    text-align: right;
+    font-weight: 600;
+}
+.testimonial blockquote::before{
+    content:'';
+    background-image: url('../img/comilla.svg');
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top:-1rem;
+    left: -1rem;
+    font-weight: 300;
+}
+.testimonial blockquote{
+    padding-left: 5rem;
+    position: relative;
+}
+/** Footer **/
+.site_footer{
+    background-color: #333333;
+    margin: 0;
+}
+.copyright{
+    margin: 0;
+    color: white;
+}
+.contenedor_footer{
+    padding: 3rem 0rem;
+    text-align: center;
+}
+.contenedor_footer nav{
+    display: none;
+}
+
+@media (min-width: 800px){
+    .contenedor_footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .contenedor_footer nav{
+        display: block;
+    }
+}
+
+/** Estilos para paginas internas **/
+@media (min-width: 800px){
+    .contenido_nosotros{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+    }
+}
+
+.texto_nosotros blockquote{
+    font-weight: 900;
+    font-size: 2rem;
+    margin:0;
+    padding: 1rem 0 3rem 0;
+}
+.resumen_propiedad{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/** Contacto **/
+.contacto p{
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #464646;
+    margin: 2rem 0 0 0;
+}
+legend{
+    font-size: 1.4rem;
+    color: #464646;
+    font-weight: 550;
+
+}
+label{
+    display:block;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+input:not([type="submit"]),
+textarea,
+select{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border:none;
+    border-radius: 1rem;
+}
+input[type="radio"]{
+    width: auto;
+    margin:0;
+}
+select{
+    -webkit-appearance: none;
+}
+textarea{
+    height: 20rem;
+}
+.forma_contacto{
+    max-width: 30rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.forma_contacto label{
+    margin-right: 1rem;
+}
+.forma_contacto input{
+    margin-right: 5rem;
+}
+.forma_contacto input:last-of-type{
+    margin: 0;
+}
